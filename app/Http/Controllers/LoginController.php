@@ -38,6 +38,7 @@ class LoginController extends Controller
 
         Auth::login($user);
 
+        // return redirect('/home');
         return $this->authenticated($request, $user);
     }
 
@@ -51,6 +52,6 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect()->intended();
+        return redirect()->intended('home');
     }
 }
