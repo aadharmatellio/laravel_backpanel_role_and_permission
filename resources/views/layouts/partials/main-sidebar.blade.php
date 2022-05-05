@@ -35,6 +35,42 @@
              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                  <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                 <li class="nav-item">
+                     <a href="{{ route('home.index') }}" class="nav-link">
+                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <p>
+                             Dashboard
+                         </p>
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="{{ route('users.index') }}" class="nav-link">
+                         <i class="nav-icon fas fa fa-users"></i>
+                         <p>
+                             Users
+                         </p>
+                     </a>
+                 </li>
+                 @role('admin')
+                 <li class="nav-item">
+                     <a href="{{ route('roles.index') }}" class="nav-link">
+                         <i class="nav-icon fa fa-user-secret"></i>
+                         <p>
+                             Roles
+                         </p>
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="{{ route('permissions.index') }}" class="nav-link">
+                         <i class="nav-icon fa fa-user-circle"></i>
+                         <p>
+                             Permissions
+                         </p>
+                     </a>
+                 </li>
+                 @endrole
+
+                 @role('extra')
                  <li class="nav-item menu-open">
                      <a href="javascript:void(0);" class="nav-link active">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -666,6 +702,7 @@
                          <p>Informational</p>
                      </a>
                  </li>
+                 @endrole
              </ul>
          </nav>
          <!-- /.sidebar-menu -->

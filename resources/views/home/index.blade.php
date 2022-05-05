@@ -1,16 +1,17 @@
 @extends('layouts.app-master')
 
 @section('content')
-<div class="bg-light p-5 rounded">
+<div class="bg-light rounded">
     @auth
-    <h1>Dashboard</h1>
-    <p class="lead">Only authenticated users can access this section.</p>
-    <a class="btn btn-lg btn-primary" href="javascript:void(0);" role="button">View more &raquo;</a>
+        @role('admin')
+            @include('admin-dashboard')
+        @else
+            @include('subadmin-dashboard')
+        @endrole
     @endauth
 
     @guest
-    <h1>Homepage</h1>
-    <p class="lead">Your viewing the home page. Please login to view the restricted data.</p>
+    <h1>You are not an authenticated user.</h1>
     @endguest
 </div>
 @endsection

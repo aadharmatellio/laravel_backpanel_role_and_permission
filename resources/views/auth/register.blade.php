@@ -4,7 +4,7 @@
 
 <div class="register-box">
     <div class="register-logo">
-        <a href="javascript:void(0);"><b>Backpanel</b></a>
+        <a href="javascript:void(0);"><b>{{ Config::get('app.name') }}</b></a>
     </div>
 
     <div class="card">

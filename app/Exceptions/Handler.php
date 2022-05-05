@@ -37,5 +37,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (\Spatie\Permission\Exceptions\UnauthorizedException $e, $request) {
+            return redirect()->back()->with('message', 'You do not have the right permissions to access this module.');
+        });
     }
 }

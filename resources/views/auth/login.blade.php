@@ -4,7 +4,7 @@
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ route('front.index') }}"><b>Backpanel</b></a>
+        <a href="{{ route('front.index') }}"><b>{{ Config::get('app.name') }}</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="card">

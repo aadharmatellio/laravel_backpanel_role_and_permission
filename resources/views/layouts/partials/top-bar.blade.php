@@ -8,13 +8,6 @@
             <a href="{{ route('home.index') }}" class="nav-link">Home</a>
         </li>
 
-        @auth
-        @role('Admin')
-        <li class="nav-item d-none d-sm-inline-block"><a href="{{ route('users.index') }}" class="nav-link">Users</a></li>
-        <li class="nav-item d-none d-sm-inline-block"><a href="{{ route('roles.index') }}" class="nav-link">Roles</a></li>
-        @endrole
-        <li class="nav-item d-none d-sm-inline-block"><a href="{{ route('posts.index') }}" class="nav-link">Posts</a></li>
-        @endauth
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('logout.perform') }}" class="nav-link">Logout</a>
         </li>
@@ -22,6 +15,13 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
+        @if(auth()->user()->roles->pluck('name')[0])
+        <li class="nav-item">
+            <span class="nav-link shadow-sm bg-white rounded"><strong>{{ ucfirst(auth()->user()->roles->pluck('name')[0]) ?? '' }}</strong></span>
+        </li>
+        @endif
+
         <!-- Navbar Search -->
         <li class="nav-item">
             <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -46,6 +46,7 @@
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
+
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
@@ -139,5 +140,11 @@
                 <i class="fas fa-th-large"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout.perform') }}" title="Logout">
+                <i class="fa fa-power-off"></i>
+            </a>
+        </li>
+
     </ul>
 </nav>

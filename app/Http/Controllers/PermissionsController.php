@@ -13,6 +13,19 @@ class PermissionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+         $this->middleware('permission:permissions.index|permissions.create|permissions.store|permissions.show|permissions.edit|permissions.update|permissions.destroy', ['only' => ['index','show']]);
+         $this->middleware('permission:permissions.create|permissions.store', ['only' => ['create','store']]);
+         $this->middleware('permission:permissions.edit|permissions.update', ['only' => ['edit','update']]);
+         $this->middleware('permission:permissions.destroy', ['only' => ['destroy']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {   
         $permissions = Permission::all();
