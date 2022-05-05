@@ -1,8 +1,7 @@
 <!-- jQuery -->
 <script src="{!! url('assets/AdminLTE/plugins/jquery/jquery.min.js') !!}"></script>
 <!--  -->
-<script src="{!! url('assets/AdminLTE/plugins/toastr/toastr.min.js') !!}"></script>
-<script src="{!! url('assets/AdminLTE/dist/js/adminlte.min.js') !!}"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="{!! url('assets/AdminLTE/plugins/jquery-ui/jquery-ui.min.js') !!}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
