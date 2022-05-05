@@ -23,24 +23,24 @@
                 </div>
             </div>
 
+            <form method="POST" action="{{ route('roles.store') }}">
+                @csrf
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="col-md-12">
 
-            <!-- /.card-header -->
-            <div class="card-body">
-                <div class="col-md-12">
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
 
-                    @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
 
-                    <form method="POST" action="{{ route('roles.store') }}">
-                        @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input value="{{ old('name') }}" type="text" class="form-control" name="name" placeholder="Name" required>
@@ -77,15 +77,16 @@
                             </tbody>
                         </table>
                         <!-- /.card -->
-                    </form>
+
+                    </div>
+                    <!-- /.col -->
                 </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save mr-2"></i>Save Role</button>
-                <a href="{{ route('roles.index') }}" class="btn btn-default btn-sm">Back</a>
-            </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save mr-2"></i>Save Role</button>
+                    <a href="{{ route('roles.index') }}" class="btn btn-default btn-sm">Back</a>
+                </div>
+            </form>
         </div>
         <!-- /.card -->
 

@@ -16,11 +16,11 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
-        @if(auth()->user()->roles->pluck('name')[0])
+        <?php if(!empty(auth()->user()->roles->pluck('name')[0])) { ?>
         <li class="nav-item">
             <span class="nav-link shadow-sm bg-white rounded"><strong>{{ ucfirst(auth()->user()->roles->pluck('name')[0]) ?? '' }}</strong></span>
         </li>
-        @endif
+        <?php } ?>
 
         <!-- Navbar Search -->
         <li class="nav-item">
