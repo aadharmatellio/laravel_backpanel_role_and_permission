@@ -68,5 +68,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::resource('roles', RolesController::class);
         Route::resource('permissions', PermissionsController::class);
+
+        Route::get(
+            '/permissions/datatable',
+            [App\Http\Controllers\PermissionsController::class, 'datatable']
+        )->name('permissions.datatables');
+
     });
 });

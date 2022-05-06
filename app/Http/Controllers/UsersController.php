@@ -15,7 +15,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $users = User::latest()->paginate(10);
 
@@ -27,7 +27,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         return view('users.create');
     }
@@ -40,12 +40,12 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, StoreUserRequest $request) 
+    public function store(User $user, StoreUserRequest $request)
     {
         //For demo purposes only. When creating user or inviting a user
         // you should create a generated random password and email it to the user
         $user->create(array_merge($request->validated(), [
-            'password' => 'test' 
+            'password' => 'test'
         ]));
 
         return redirect()->route('users.index')
@@ -59,7 +59,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user) 
+    public function show(User $user)
     {
         return view('users.show', [
             'user' => $user
@@ -73,7 +73,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user) 
+    public function edit(User $user)
     {
         return view('users.edit', [
             'user' => $user,
@@ -90,7 +90,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user, UpdateUserRequest $request) 
+    public function update(User $user, UpdateUserRequest $request)
     {
         $user->update($request->validated());
 
@@ -107,7 +107,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user) 
+    public function destroy(User $user)
     {
         $user->delete();
 

@@ -27,6 +27,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
+
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)) :
@@ -37,8 +38,7 @@ class LoginController extends Controller
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
         Auth::login($user);
-
-        // return redirect('/home');
+        // $user = auth()->user(); dd($user);
         return $this->authenticated($request, $user);
     }
 
