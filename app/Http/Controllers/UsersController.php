@@ -99,6 +99,13 @@ class UsersController extends Controller
             ->addColumn('username', function ($usersdata) {
                 return $username = (isset($usersdata->username)) ? ucwords($usersdata->username) : "";
             })
+            ->addColumn('role', function ($usersdata) {
+                $html = "";
+                foreach ($usersdata->roles as $role) {
+                    $html .=  ucwords($role->name) ;
+                }
+                return $html;
+            })
             ->addColumn('status', function ($usersdata) {
                 return $status = (isset($usersdata->status) && ($usersdata->status == 1)) ? 'Enabled' : 'Disabled';
             })

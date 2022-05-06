@@ -65,6 +65,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Username</th>
+                        <th>Role</th>
                         <th>Status</th>
                         <th width="100">Action</th>
                     </thead>
@@ -102,6 +103,13 @@
             {
                 data: 'username',
                 name: 'username'
+            },
+            {
+                data: 'role',
+                name: 'role',
+                render: function(data, type, full, meta) {
+                    return "<span class='right badge badge-primary p-1'>" + data + "</span>";
+                }
             },
             {
                 data: 'status',
