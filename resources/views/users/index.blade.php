@@ -35,6 +35,7 @@
                                 <th scope="col">Email</th>
                                 <th scope="col" width="10%">Username</th>
                                 <th scope="col" width="10%">Roles</th>
+                                <th scope="col" width="10%">Status</th>
                                 <th scope="col" width="1%" colspan="3"></th>
                             </tr>
                         </thead>
@@ -53,6 +54,7 @@
                                     <span class="badge bg-primary">{{ $role->name }}</span>
                                     @endforeach
                                 </td>
+                                <td>@if($user->status=="1") Active @else Inactive @endif</td>
                                 <td><a href="{{ route('users.show', $user->id) }}" class="btn btn-warning btn-sm">Show</a></td>
                                 <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">Edit</a></td>
                                 <td>

@@ -11,7 +11,7 @@
                     <a href="{{ route('roles.index') }}" class="btn btn-primary btn-sm">
                         <i class="fa fa-arrow-left"></i> &nbsp;Back
                     </a>
-                    <strong class="pl-2">Update Role</strong> (role and manage permissions)
+                    <strong class="pl-2">Update Role</strong> (role and manage permissions) | [<b>login.perform </b>is to activate or deactivate login]
                 </h2>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
