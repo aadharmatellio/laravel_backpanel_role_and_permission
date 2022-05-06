@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -27,6 +30,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
+
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)) :
@@ -35,10 +39,26 @@ class LoginController extends Controller
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        $rolespermissions = $user->getPermissionsViaRoles(); // collection of name strings
+
+        $assignedPermissions = [];
+        foreach ($rolespermissions as $key => $value) {
+            $assignedPermissions[] = $value->name;
+        }
+
+        if($user->status!="1") {
+            return redirect()->to('login')
+                ->withErrors("Your Account is disabled. Please contact the administrator");
+        }
+
+        $roles = $user->getRoleNames(); // Returns a collection
+        if ((!in_array("login.perform", $assignedPermissions)) || ($user->status!="1")) {
+            return redirect()->to('login')
+                ->withErrors("You role is disabled. Please contact the administrator");
+        }
 
         Auth::login($user);
-
-        // return redirect('/home');
+        // $user = auth()->user(); dd($user);
         return $this->authenticated($request, $user);
     }
 

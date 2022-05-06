@@ -50,11 +50,20 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/{user}/show', 'UsersController@show')->name('users.show');
             Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
-            Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
+            // Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
+            Route::get('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
+
+            Route::get('/enable/{id}', [App\Http\Controllers\UsersController::class, 'enable'])->name('users.enable');
+            Route::get('/disable/{id}', [App\Http\Controllers\UsersController::class, 'disable'])->name('users.disable');
+
+            Route::get(
+                '/datatable',
+                [App\Http\Controllers\UsersController::class, 'datatable']
+            )->name('users.datatables')->withoutMiddleware(['permission']);
         });
 
         /**
-         * User Routes
+         * Post Routes
          */
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/', 'PostsController@index')->name('posts.index');
@@ -68,5 +77,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::resource('roles', RolesController::class);
         Route::resource('permissions', PermissionsController::class);
+
+        Route::get(
+            '/permissions/datatable',
+            [App\Http\Controllers\PermissionsController::class, 'datatable']
+        )->name('permissions.datatables');
+
     });
 });
