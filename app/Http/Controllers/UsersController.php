@@ -94,10 +94,10 @@ class UsersController extends Controller
                 return $name = (isset($usersdata->name)) ? ucwords($usersdata->name) : "";
             })
             ->addColumn('email', function ($usersdata) {
-                return $email = (isset($usersdata->email)) ? ucwords($usersdata->email) : "";
+                return $email = (isset($usersdata->email)) ? ($usersdata->email) : "";
             })
             ->addColumn('username', function ($usersdata) {
-                return $username = (isset($usersdata->username)) ? ucwords($usersdata->username) : "";
+                return $username = (isset($usersdata->username)) ? ($usersdata->username) : "";
             })
             ->addColumn('role', function ($usersdata) {
                 $html = "";

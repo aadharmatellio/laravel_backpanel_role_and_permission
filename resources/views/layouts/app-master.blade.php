@@ -28,17 +28,17 @@
     <link rel="stylesheet" href="{!! url('assets/AdminLTE/plugins/daterangepicker/daterangepicker.css') !!}">
     <!-- summernote -->
     <link rel="stylesheet" href="{!! url('assets/AdminLTE/plugins/summernote/summernote-bs4.min.css') !!}">
-    
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <?php
-            if (!empty(request()->route()->getName())) {
-                $routes = explode('.', request()->route()->getName());
-                $module = !empty($routes[0]) ? $routes[0] : "" ;
-                $page = !empty($routes[1]) ? $routes[1] : "" ;
-            }
+        if (!empty(request()->route()->getName())) {
+            $routes = explode('.', request()->route()->getName());
+            $module = !empty($routes[0]) ? $routes[0] : "";
+            $page = !empty($routes[1]) ? $routes[1] : "";
+        }
         ?>
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
@@ -46,7 +46,7 @@
         </div>
 
         <!-- Navbar -->
-        
+
 
         @include('layouts.partials.top-bar')
         <!-- /.navbar -->
@@ -55,8 +55,8 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-        
-            
+
+
 
             <!-- Content Header (Page header) -->
             <div class="content-header">
@@ -96,8 +96,10 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
+    
     @include('layouts.partials.scripts')
+
+    @yield('scripts')
 </body>
 
 </html>

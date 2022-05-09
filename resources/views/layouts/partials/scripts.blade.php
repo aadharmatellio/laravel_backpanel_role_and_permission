@@ -1,6 +1,5 @@
 <!-- jQuery -->
 <script src="{!! url('assets/AdminLTE/plugins/jquery/jquery.min.js') !!}"></script>
-<!--  -->
 
 <!-- jQuery UI 1.11.4 -->
 <script src="{!! url('assets/AdminLTE/plugins/jquery-ui/jquery-ui.min.js') !!}"></script>

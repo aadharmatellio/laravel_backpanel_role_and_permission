@@ -116,10 +116,10 @@ class PermissionsController extends Controller
                 }
             })
             ->addColumn('name', function ($permissiondata) {
-                return $name = (isset($permissiondata->name)) ? ucwords($permissiondata->name) : "";
+                return $name = (isset($permissiondata->name)) ? ($permissiondata->name) : "";
             })
             ->addColumn('guard_name', function ($permissiondata) {
-                return $guard_name = (isset($permissiondata->guard_name)) ? ucwords($permissiondata->guard_name) : "";
+                return $guard_name = (isset($permissiondata->guard_name)) ? ($permissiondata->guard_name) : "";
             })
             ->addColumn('action', function ($permissiondata) {
 
