@@ -102,7 +102,7 @@ class UsersController extends Controller
             ->addColumn('role', function ($usersdata) {
                 $html = "";
                 foreach ($usersdata->roles as $role) {
-                    $html .=  ucwords($role->name) ;
+                    $html .=  ucwords($role->name);
                 }
                 return $html;
             })

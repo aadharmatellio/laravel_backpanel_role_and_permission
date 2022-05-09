@@ -137,7 +137,7 @@ class PermissionsController extends Controller
 
                 $final = $editlink . $link;
                 // $final = "";
-             
+
                 return $final;
             })
             ->make(true);

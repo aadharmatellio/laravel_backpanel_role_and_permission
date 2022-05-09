@@ -82,6 +82,5 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             '/permissions/datatable',
             [App\Http\Controllers\PermissionsController::class, 'datatable']
         )->name('permissions.datatables');
-
     });
 });

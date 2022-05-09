@@ -46,13 +46,13 @@ class LoginController extends Controller
             $assignedPermissions[] = $value->name;
         }
 
-        if($user->status!="1") {
+        if ($user->status != "1") {
             return redirect()->to('login')
                 ->withErrors("Your Account is disabled. Please contact the administrator");
         }
 
         $roles = $user->getRoleNames(); // Returns a collection
-        if ((!in_array("login.perform", $assignedPermissions)) || ($user->status!="1")) {
+        if ((!in_array("login.perform", $assignedPermissions)) || ($user->status != "1")) {
             return redirect()->to('login')
                 ->withErrors("You role is disabled. Please contact the administrator");
         }
